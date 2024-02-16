@@ -1,7 +1,7 @@
 import test, { expect } from '../fixtures/basePage.fixture'
 
 test.describe('main tests work', () => {
-    test('Test 1', async ({ homePage, headerPage }) => {
+    test('Test 1 - Get in touch button is yellow', async ({ homePage, headerPage }) => {
         const yellowRGB = 'rgb(255, 212, 60)'
 
         await homePage.goTo();
@@ -11,7 +11,7 @@ test.describe('main tests work', () => {
 
         expect(bckColor).toEqual(yellowRGB)
     });
-    test('Test 2', async ({ homePage, headerPage, esgKpiEnpinePage }) => {
+    test('Test 2 - finance - ESG KPI Engine redirects to correct page', async ({ homePage, headerPage, esgKpiEnpinePage }) => {
         await homePage.goTo();
         await homePage.isLoaded();
         await headerPage.isLoaded();
@@ -20,7 +20,7 @@ test.describe('main tests work', () => {
 
         expect(await esgKpiEnpinePage.confirmUrl()).toBeTruthy();
     });
-    test('Test 3', async ({ homePage, contactPage, headerPage }) => {
+    test('Test 3 - validation error is shown when invalid email is provided on contact form', async ({ homePage, contactPage, headerPage }) => {
         const invalidEmail = '342323';
 
         await homePage.goTo();
@@ -35,6 +35,5 @@ test.describe('main tests work', () => {
 
         await expect(contactPage.workEmailErrorMsg).toBeVisible();
         await expect(contactPage.workEmailErrorMsg).toHaveText(`Email must be formatted correctly.`);
-
     });
 });
