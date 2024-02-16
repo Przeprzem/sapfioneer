@@ -1,17 +1,21 @@
 import { Locator, Page, expect } from '@playwright/test';
+import { cssProperties } from '../enums/enums';
 export class BasePage {
     url = '';
+
     constructor(protected page: Page) {
     }
-    async getElementCSSProperty(elementLocator: Locator, propertyName: string) {
+
+    async getElementCSSProperty(elementLocator: Locator, propertyName: cssProperties): Promise<string> {
         let property = propertyName
+
         return elementLocator.evaluate((el, property) => {
             return window.getComputedStyle(el).getPropertyValue(property);
         }, property);
     }
 
     async getBackgroundColor(elementLocator: Locator): Promise<string> {
-        return await this.getElementCSSProperty(elementLocator, 'background-color')
+        return await this.getElementCSSProperty(elementLocator, cssProperties.backgroundColor)
     }
 
     async confirmUrl(): Promise<Boolean> {

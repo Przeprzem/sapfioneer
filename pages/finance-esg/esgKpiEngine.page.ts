@@ -3,9 +3,7 @@ import { BasePage } from '../base.page';
 
 export class EsgKpiEnginePage extends BasePage {
     url = "/finance-esg/esg-kpi-engine/";
-
     darkSectionSelector = `//*[@class='section dark']`
-
 
     contentArea_header = this.page.locator(this.darkSectionSelector + `//h1[text()='Master ESG KPI management']`)
     contentArea_paragraph = this.page.locator(this.darkSectionSelector + `//p[starts-with(text(), 'Financial services institutions')]`)
