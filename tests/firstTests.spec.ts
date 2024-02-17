@@ -22,6 +22,7 @@ test.describe('main tests work', () => {
     });
     test('Test 3 - validation error is shown when invalid email is provided on contact form', async ({ homePage, contactPage, headerPage }) => {
         const invalidEmail = '342323';
+        const expectedErrorMsg = 'Email must be formatted correctly.'
 
         await homePage.goTo();
         await headerPage.isLoaded();
@@ -32,8 +33,8 @@ test.describe('main tests work', () => {
         expect(await contactPage.confirmUrl()).toBeTruthy();
 
         await contactPage.workEmailInput.fill(invalidEmail);
+        await contactPage.tabOut();
 
-        await expect(contactPage.workEmailErrorMsg).toBeVisible();
-        await expect(contactPage.workEmailErrorMsg).toHaveText(`Email must be formatted correctly.`);
+        expect(await contactPage.checkIfValidationMessageWasFound(expectedErrorMsg));
     });
 });
