@@ -1,4 +1,5 @@
 import test, { expect } from '../fixtures/basePage.fixture'
+import { contactValidationMessages } from '../enums/enums'
 
 test.describe('main tests work', () => {
     test('Test 1 - Get in touch button is yellow', async ({ homePage, headerPage }) => {
@@ -22,7 +23,7 @@ test.describe('main tests work', () => {
     });
     test('Test 3 - validation error is shown when invalid email is provided on contact form', async ({ homePage, contactPage, headerPage }) => {
         const invalidEmail = '342323';
-        const expectedErrorMsg = 'Email must be formatted correctly.'
+        const expectedErrorMsg = contactValidationMessages.invalidEmail;
 
         await homePage.goTo();
         await headerPage.isLoaded();

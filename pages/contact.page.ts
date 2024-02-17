@@ -11,9 +11,9 @@ export class ContactPage extends BasePage {
     workEmailInput = this.formIframe.locator(`//input[@name='email']`)
     phoneInput = this.formIframe.locator(`//input[@name='phone']`)
 
-    workEmailErrorMsg = this.page.frameLocator(`//*[@class='hs-form-iframe']`).getByRole('alert');
+    workEmailErrorMsg = this.formIframe.getByRole('alert');
 
-    validationErrorMessages = this.page.frameLocator(`//*[@class='hs-form-iframe']`).getByRole('alert');
+    validationErrorMessages = this.formIframe.getByRole('alert');
 
 
     header = this.page.locator(this.darkSectionSelector + `//h3[text()='Get in touch']`)

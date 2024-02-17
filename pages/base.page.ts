@@ -23,12 +23,6 @@ export class BasePage {
         return currentUrl.includes(this.url)
     }
 
-    async castLocatorToSelector(elementLocator): Promise<string> {
-        let selector: string;
-        selector = elementLocator.toString().slice(8);
-        return selector;
-    }
-
     async tabOut() {
         await this.page.keyboard.press("Tab");
     }
