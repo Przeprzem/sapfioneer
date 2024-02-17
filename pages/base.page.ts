@@ -28,4 +28,8 @@ export class BasePage {
         selector = elementLocator.toString().slice(8);
         return selector;
     }
+
+    async tabOut() {
+        await this.page.keyboard.press("Tab");
+    }
 }
