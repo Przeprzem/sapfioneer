@@ -9,7 +9,11 @@ export class ContactPage extends BasePage {
 
     formIframe = this.page.frameLocator(`//*[@class='hs-form-iframe']`)
     workEmailInput = this.formIframe.locator(`//input[@name='email']`)
+    phoneInput = this.formIframe.locator(`//input[@name='phone']`)
+
     workEmailErrorMsg = this.page.frameLocator(`//*[@class='hs-form-iframe']`).getByRole('alert');
+
+    validationErrorMessages = this.page.frameLocator(`//*[@class='hs-form-iframe']`).getByRole('alert');
 
 
     header = this.page.locator(this.darkSectionSelector + `//h3[text()='Get in touch']`)
@@ -27,5 +31,14 @@ export class ContactPage extends BasePage {
         const areAllVisible = await Promise.all(locators.map(async locator => await locator.isVisible()));
 
         return areAllVisible.every(isVisible => isVisible);
+    }
+
+    async getValidationErrorMessages(): Promise<string[]> {
+        return this.validationErrorMessages.allTextContents();
+    }
+
+    async checkIfValidationMessageWasFound(expectedValidationMessage): Promise<boolean> {
+        let wasFound = (await this.getValidationErrorMessages()).includes(expectedValidationMessage);
+        return wasFound;
     }
 }
