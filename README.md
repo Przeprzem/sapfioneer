@@ -19,6 +19,7 @@ ms-playwright.playwright
 
 # Build and Test
 run tests: npx playwright test
+
 show report: npx playwright show-report
 
 # Updating all packages
