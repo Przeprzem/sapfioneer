@@ -16,6 +16,10 @@ export class HomePage extends BasePage {
         super(page);
     }
 
+    /**
+     * 
+     * @returns boolean value for the check if page was properly loaded with all expected elements visible
+     */
     async isLoaded(): Promise<boolean> {
         await this.page.waitForLoadState('networkidle');
 

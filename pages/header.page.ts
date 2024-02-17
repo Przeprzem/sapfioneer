@@ -5,10 +5,12 @@ export class HeaderPage extends BasePage {
     url = "/";
     navBarSelector = `//*[@id='masthead']//a[@class='nav-top-link']`
 
+    //#region buttons
     contactBtn = this.page.locator(`//*[@id='masthead']//a[@href='/contact/']`)
+    //#endregion
 
     logo = this.page.locator(`//*[@id='logo']/a`)
-
+    //#region navigation bar sections
     bankingNavBar = this.page.locator(this.navBarSelector + `[text()='Banking']`)
     InsuranceNavBar = this.page.locator(this.navBarSelector + `[text()='Insurance']`)
     financeAndEsgNavBar = this.page.locator(this.navBarSelector + `[text()='Finance & ESG']`)
@@ -17,16 +19,22 @@ export class HeaderPage extends BasePage {
     companyNavBar = this.page.locator(this.navBarSelector + `[text()='Company']`)
     resourcesNavBar = this.page.locator(this.navBarSelector + `[text()='Resources']`)
 
+    languageNavBar = this.page.locator(`//*[@id='masthead']//li[contains(@class,'wpml-ls-current-language')]//a[@class='nav-top-link']`)
+    //#endregion
+
     //#region navBarDropdownOptions
     finance_esgKpiEngine = this.page.locator(`//*[@class='sub-menu nav-dropdown']//a[contains(@href,'https://www.sapfioneer.com/finance-esg/esg-kpi-engine/')]`)
     //#endregion
 
-    languageNavBar = this.page.locator(`//*[@id='masthead']//li[contains(@class,'wpml-ls-current-language')]//a[@class='nav-top-link']`)
 
     constructor(page: Page) {
         super(page);
     }
 
+    /**
+     * 
+     * @returns boolean value for the check if page was properly loaded with all expected elements visible
+     */
     async isLoaded(): Promise<boolean> {
         await this.page.waitForLoadState('networkidle');
 
