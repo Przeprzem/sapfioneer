@@ -15,6 +15,7 @@ Goal of this project is to automate sapfioneer.com using Playwright + Typescript
 
 # VS Code extensions:
 sakamoto66.vscode-playwright-test-
+
 ms-playwright.playwright
 
 # Build and Test
