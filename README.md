@@ -14,7 +14,7 @@ Goal of this project is to automate sapfioneer.com using Playwright + Typescript
 4. "terminal.external.windowsExec": "C:\Windows\System32\cmd.exe"
 
 # VS Code extensions:
-sakamoto66.vscode-playwright-test-
+sakamoto66.vscode-playwright-test-runner
 
 ms-playwright.playwright
 
