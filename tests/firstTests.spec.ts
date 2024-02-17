@@ -8,7 +8,7 @@ test.describe('main tests work', () => {
         await homePage.goTo();
         await homePage.isLoaded();
 
-        const bckColor = await homePage.getBackgroundColor(headerPage.contactBtn)
+        const bckColor = await homePage.getBackgroundColor(headerPage.getInTouchBtn)
 
         expect(bckColor).toEqual(yellowRGB)
     });
@@ -28,7 +28,7 @@ test.describe('main tests work', () => {
         await homePage.goTo();
         await headerPage.isLoaded();
         await homePage.isLoaded();
-        await headerPage.contactBtn.click();
+        await headerPage.getInTouchBtn.click();
         await contactPage.isLoaded();
 
         expect(await contactPage.confirmUrl()).toBeTruthy();

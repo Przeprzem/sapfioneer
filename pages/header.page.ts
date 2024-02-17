@@ -6,7 +6,7 @@ export class HeaderPage extends BasePage {
     navBarSelector = `//*[@id='masthead']//a[@class='nav-top-link']`
 
     //#region buttons
-    contactBtn = this.page.locator(`//*[@id='masthead']//a[@href='/contact/']`)
+    getInTouchBtn = this.page.locator(`//*[@id='masthead']//*[text()='Get in touch']/parent::a[@href='/contact/']`)
     //#endregion
 
     logo = this.page.locator(`//*[@id='logo']/a`)
@@ -38,7 +38,7 @@ export class HeaderPage extends BasePage {
     async isLoaded(): Promise<boolean> {
         await this.page.waitForLoadState('networkidle');
 
-        const locators = [this.logo, this.bankingNavBar, this.InsuranceNavBar, this.financeAndEsgNavBar, this.servicesNavBar, this.partnersNavBar, this.companyNavBar, this.resourcesNavBar, this.languageNavBar];
+        const locators = [this.logo, this.getInTouchBtn, this.bankingNavBar, this.InsuranceNavBar, this.financeAndEsgNavBar, this.servicesNavBar, this.partnersNavBar, this.companyNavBar, this.resourcesNavBar, this.languageNavBar];
         const areAllVisible = await Promise.all(locators.map(async locator => await locator.isVisible()));
 
         return areAllVisible.every(isVisible => isVisible);
